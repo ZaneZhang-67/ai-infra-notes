@@ -39,6 +39,7 @@ const sidebars: SidebarsConfig = {
             'fundamentals/math/transpose-identity-inverse',
             'fundamentals/math/linear-dependence-span-rank',
             'fundamentals/math/eigenvalues-eigenvectors',
+            'fundamentals/math/lora-low-rank-adaptation',
           ],
         },
         {
