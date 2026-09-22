@@ -64,6 +64,15 @@
   letter-spacing: -0.035em;
 }
 
+.theme-doc-markdown h1,
+.theme-doc-markdown h2,
+.theme-doc-markdown h3,
+.theme-doc-markdown h4,
+.theme-doc-markdown h5,
+.theme-doc-markdown h6 {
+  color: #036eff;
+}
+
 .markdown > h2 {
   margin-top: 2.6rem;
 }

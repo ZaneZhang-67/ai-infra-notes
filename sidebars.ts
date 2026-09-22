@@ -28,6 +28,11 @@ const sidebars: SidebarsConfig = {
             'fundamentals/math/linear-algebra',
             'fundamentals/math/probability-statistics',
             'fundamentals/math/calculus-numerical',
+            {
+              type: 'doc',
+              id: 'fundamentals/math-basics',
+              label: '2.5 范数、误差与数值容差',
+            },
           ],
         },
         {
