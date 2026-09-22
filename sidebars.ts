@@ -35,6 +35,7 @@ const sidebars: SidebarsConfig = {
             },
             'fundamentals/math/matrix-multiplication',
             'fundamentals/math/batched-matrix-multiplication',
+            'fundamentals/math/linear-affine-transformations',
           ],
         },
         {
