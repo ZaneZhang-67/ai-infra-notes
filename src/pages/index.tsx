@@ -29,6 +29,15 @@ function HomepageHeader() {
         <p className={styles.heroDescription}>
           从系统、编程、数学和深度学习基础开始，逐步建立扎实的 AI Infra 知识底座。
         </p>
+        <p className={styles.referenceNote}>
+          本站结构参考{' '}
+          <a
+            href="https://caomaolufei.github.io/AIInfraGuide/"
+            target="_blank"
+            rel="noopener noreferrer">
+            草帽路飞的 AI Infra Guide
+          </a>
+        </p>
         <div className={styles.buttons}>
           <Link className="button button--primary button--lg" to="/docs/">
             开始阅读

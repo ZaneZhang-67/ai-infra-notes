@@ -58,6 +58,16 @@
   line-height: 1.9;
 }
 
+.referenceNote {
+  margin: 0.85rem auto 0;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.88rem;
+}
+
+.referenceNote a {
+  font-weight: 600;
+}
+
 .buttons {
   display: flex;
   justify-content: center;
