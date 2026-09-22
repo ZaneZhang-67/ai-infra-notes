@@ -2,6 +2,8 @@
 
 基于 Docusaurus 的 AI Infra 学习知识库。文章、学习路线和日志均使用 Markdown 编写。
 
+在线访问：[AI Infra Notes](https://zanezhang-67.github.io/ai-infra-notes/)
+
 ## 本地运行
 
 需要 Node.js 20 或更高版本。
