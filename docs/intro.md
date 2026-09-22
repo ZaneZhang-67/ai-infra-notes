@@ -13,7 +13,7 @@ description: 系统整理 AI Infra 所需基础知识的个人知识库。
 ## 内容地图
 
 - [学习路线](./roadmap.md)：维护目标、进度和下一步计划。
-- [计算机与深度学习基础](./fundamentals/overview.md)：Linux、C++、PyTorch 与数学基础。
+- [计算机与深度学习基础](/docs/fundamentals/)：Linux、C++、PyTorch 与数学基础。
 
 :::tip 写作建议
 

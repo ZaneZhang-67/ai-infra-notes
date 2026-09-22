@@ -126,7 +126,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'knowledgeSidebar',
           position: 'left',
-          label: '知识库',
+          label: '前置知识',
         },
         {
           to: '/docs/roadmap',

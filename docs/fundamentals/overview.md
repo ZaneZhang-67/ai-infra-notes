@@ -1,15 +1,17 @@
 ---
-title: 模块概览
+title: AI Infra 前置基础
+slug: /fundamentals/
 sidebar_position: 1
 description: 计算机系统与深度学习基础模块。
 ---
 
-# 基础知识
+# AI Infra 前置基础
 
-建议从以下主题开始补全：
+本模块包含以下章节：
 
-- Linux 系统与常用性能工具
-- C++、并发与内存管理
-- 线性代数、概率统计与数值计算
-- PyTorch 执行机制与自动微分
-- Transformer 基础
+1. 编程语言基础
+2. 数学基础
+3. AI Infra 工程师学 Transformer
+4. PyTorch 框架
+5. GPU 硬件概论
+6. 集合通信基础

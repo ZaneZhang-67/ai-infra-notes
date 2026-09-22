@@ -37,6 +37,29 @@
   letter-spacing: -0.02em;
 }
 
+.navbar__link {
+  position: relative;
+}
+
+.navbar__link--active::after {
+  position: absolute;
+  right: 0.75rem;
+  bottom: -0.95rem;
+  left: 0.75rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ifm-color-primary);
+  content: '';
+}
+
+.theme-doc-sidebar-menu > .menu__list-item > .menu__list-item-collapsible > .menu__link {
+  font-weight: 700;
+}
+
+.theme-doc-sidebar-menu .menu__link--active {
+  border-left: 2px solid var(--ifm-color-primary);
+}
+
 .theme-doc-markdown h1:first-child {
   letter-spacing: -0.035em;
 }

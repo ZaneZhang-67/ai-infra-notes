@@ -10,7 +10,7 @@ import styles from './index.module.css';
 const topics = [
   {
     index: '01',
-    title: '基础知识',
+    title: 'AI Infra 前置基础',
     description: 'Linux、C++、PyTorch、数学与 Transformer 基础。',
     href: '/docs/fundamentals/',
   },
@@ -22,7 +22,6 @@ function HomepageHeader() {
   return (
     <header className={styles.heroBanner}>
       <div className={clsx('container', styles.heroContent)}>
-        <span className={styles.eyebrow}>持续更新 · Markdown 驱动</span>
         <Heading as="h1" className={styles.heroTitle}>
           {siteConfig.title}
         </Heading>
