@@ -23,7 +23,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: '第2章：数学基础',
           collapsed: true,
-          link: {type: 'doc', id: 'fundamentals/math-basics'},
+          link: {type: 'doc', id: 'fundamentals/math-overview'},
           items: [
             'fundamentals/math/linear-algebra',
             'fundamentals/math/probability-statistics',

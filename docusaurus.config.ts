@@ -15,7 +15,7 @@ const isUserPage = projectName === `${organizationName}.github.io`;
 const config: Config = {
   title: 'AI Infra 学习笔记',
   tagline: '系统整理 AI Infra 所需的基础知识',
-  favicon: 'img/logo.svg',
+  favicon: 'img/labelhub-logo.svg',
 
   future: {
     v4: true,
@@ -118,7 +118,7 @@ const config: Config = {
       title: 'AI Infra Notes',
       logo: {
         alt: 'AI Infra Notes',
-        src: 'img/logo.svg',
+        src: 'img/labelhub-logo.svg',
       },
       hideOnScroll: true,
       items: [
