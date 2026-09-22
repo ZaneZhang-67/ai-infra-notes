@@ -33,6 +33,11 @@
   box-shadow: none;
 }
 
+.navbar__logo {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .navbar__title {
   letter-spacing: -0.02em;
 }
