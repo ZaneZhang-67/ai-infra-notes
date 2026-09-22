@@ -257,7 +257,7 @@ $$
 - QR 分解（QR Decomposition）把矩阵分成正交矩阵和上三角矩阵，数值稳定性通常较好
 - Cholesky 分解（Cholesky Decomposition）适用于对称正定矩阵，计算成本比一般分解更低
 
-### LU 中的 L 和 U
+### LU 分解（LU Decomposition）
 
 LU 分解的形式是：
 
@@ -287,24 +287,6 @@ $$
 
 常见的 Doolittle 形式会把 $L$ 的主对角线设为 $1$。下三角结构适合从上到下进行前向代入，上三角结构适合从下到上进行回代，这正是 $LUx=b$ 可以拆成两个简单方程的原因
 
-### QR 和 Cholesky 中的矩阵
-
-QR 分解的英文含义可以直接从矩阵名称理解：
-
-$$
-A=QR
-$$
-
-其中 $Q$ 是正交矩阵（Orthogonal Matrix），满足 $Q^\mathsf{T}Q=I$，$R$ 是上三角矩阵（Upper Triangular Matrix）
-
-Cholesky 分解通常写成：
-
-$$
-A=LL^\mathsf{T}
-$$
-
-其中 $A$ 必须是对称正定矩阵，$L$ 是对角线元素为正的下三角矩阵。它只需要存储和计算一个三角矩阵，因此通常比一般 LU 分解更高效
-
 以 LU 分解为例，原方程变为：
 
 $$
@@ -323,7 +305,7 @@ $$
 Ux=y
 $$
 
-### 一个具体例子
+#### LU 示例
 
 考虑线性方程组：
 
@@ -435,6 +417,71 @@ $$
 再计算 $A^{-1}b$ 同样得到 $x=(2,3)^\mathsf{T}$。两种方法的数学结果一致，但求解一个或多个右端向量时，LU 分解只需要分解一次，再重复进行三角方程求解，不需要显式构造整个逆矩阵
 
 这两个步骤分别是三角方程求解，通常比显式计算逆矩阵更快，也更适合数值计算
+
+### QR 分解（QR Decomposition）
+
+QR 分解将矩阵写成：
+
+$$
+A=QR
+$$
+
+其中 $Q$ 是正交矩阵（Orthogonal Matrix），满足 $Q^\mathsf{T}Q=I$，$R$ 是上三角矩阵（Upper Triangular Matrix）。可以把 $Q$ 理解为只改变方向、不改变长度的正交变换，$R$ 则记录变换后的缩放和组合关系
+
+#### QR 示例
+
+考虑矩阵：
+
+$$
+A=\begin{bmatrix}
+1&1\\
+1&-1
+\end{bmatrix}
+$$
+
+它的两列互相正交，长度都是 $\sqrt{2}$。将两列分别归一化后得到：
+
+$$
+Q=\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1&1\\
+1&-1
+\end{bmatrix},\qquad
+R=\begin{bmatrix}
+\sqrt{2}&0\\
+0&\sqrt{2}
+\end{bmatrix}
+$$
+
+直接相乘可以验证：
+
+$$
+QR=\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1&1\\
+1&-1
+\end{bmatrix}
+\begin{bmatrix}
+\sqrt{2}&0\\
+0&\sqrt{2}
+\end{bmatrix}
+=\begin{bmatrix}
+1&1\\
+1&-1
+\end{bmatrix}=A
+$$
+
+同时，$Q^\mathsf{T}Q=I$，而 $R$ 的左下角为 $0$，因此它确实是上三角矩阵
+
+### Cholesky 分解（Cholesky Decomposition）
+
+Cholesky 分解通常写成：
+
+$$
+A=LL^\mathsf{T}
+$$
+
+其中 $A$ 必须是对称正定矩阵，$L$ 是对角线元素为正的下三角矩阵。它只需要存储和计算一个三角矩阵，因此通常比一般 LU 分解更高效
 
 在 PyTorch 中，已知 $A$ 和 $b$ 时通常写成：
 
