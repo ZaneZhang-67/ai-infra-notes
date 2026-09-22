@@ -38,6 +38,7 @@ const sidebars: SidebarsConfig = {
             'fundamentals/math/linear-affine-transformations',
             'fundamentals/math/transpose-identity-inverse',
             'fundamentals/math/linear-dependence-span-rank',
+            'fundamentals/math/eigenvalues-eigenvectors',
           ],
         },
         {
