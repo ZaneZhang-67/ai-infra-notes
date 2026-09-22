@@ -67,26 +67,6 @@ function TopicGrid() {
   );
 }
 
-function WritingFlow() {
-  return (
-    <section className={styles.workflowSection}>
-      <div className={clsx('container', styles.workflow)}>
-        <div>
-          <span className={styles.sectionLabel}>WORKFLOW</span>
-          <Heading as="h2">专注内容，发布交给自动化</Heading>
-        </div>
-        <div className={styles.workflowSteps}>
-          <span>编写 Markdown</span>
-          <span aria-hidden="true">→</span>
-          <span>提交到 GitHub</span>
-          <span aria-hidden="true">→</span>
-          <span>自动发布</span>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export default function Home(): ReactNode {
   return (
     <Layout
@@ -95,7 +75,6 @@ export default function Home(): ReactNode {
       <HomepageHeader />
       <main>
         <TopicGrid />
-        <WritingFlow />
       </main>
     </Layout>
   );

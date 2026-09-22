@@ -151,31 +151,6 @@
   font-weight: 700;
 }
 
-.workflowSection {
-  padding: 0 0 6rem;
-}
-
-.workflow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  padding: 2.5rem 3rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 22px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.07), rgba(124, 58, 237, 0.07));
-}
-
-.workflowSteps {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  color: var(--ifm-color-emphasis-800);
-  font-family: var(--ifm-font-family-monospace);
-  font-size: 0.88rem;
-  white-space: nowrap;
-}
-
 [data-theme='dark'] .heroBanner {
   background:
     radial-gradient(circle at 18% 18%, rgba(59, 130, 246, 0.22), transparent 32%),
@@ -209,15 +184,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .workflow {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 @media screen and (max-width: 620px) {
-  .buttons,
-  .workflowSteps {
+  .buttons {
     flex-direction: column;
   }
 
@@ -229,11 +199,4 @@
     grid-template-columns: 1fr;
   }
 
-  .workflow {
-    padding: 2rem 1.5rem;
-  }
-
-  .workflowSteps {
-    align-items: flex-start;
-  }
 }
