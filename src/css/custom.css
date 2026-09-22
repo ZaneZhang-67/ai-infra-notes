@@ -80,3 +80,8 @@
 .footer--dark {
   --ifm-footer-background-color: #090d18;
 }
+
+html.docs-wrapper .pagination-nav,
+html.docs-wrapper .footer--dark {
+  display: none;
+}
