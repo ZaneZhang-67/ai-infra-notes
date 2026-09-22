@@ -1,0 +1,9 @@
+{
+  "label": "3. 分布式训练",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "slug": "/distributed-training/",
+    "description": "集合通信、并行策略、训练框架与集群实践。"
+  }
+}
