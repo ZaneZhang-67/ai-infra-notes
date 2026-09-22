@@ -14,36 +14,6 @@ const topics = [
     description: 'Linux、C++、PyTorch、数学与 Transformer 基础。',
     href: '/docs/fundamentals/',
   },
-  {
-    index: '02',
-    title: 'GPU 与 CUDA',
-    description: 'GPU 架构、CUDA 编程、经典算子与性能优化。',
-    href: '/docs/gpu-cuda/',
-  },
-  {
-    index: '03',
-    title: '分布式训练',
-    description: '集合通信、并行策略、训练框架与集群实践。',
-    href: '/docs/distributed-training/',
-  },
-  {
-    index: '04',
-    title: '大模型推理',
-    description: '推理引擎、KV Cache、调度、量化与服务化。',
-    href: '/docs/inference-serving/',
-  },
-  {
-    index: '05',
-    title: '性能分析',
-    description: 'Profiling、Benchmark、指标体系与优化方法论。',
-    href: '/docs/performance/',
-  },
-  {
-    index: '06',
-    title: '项目与实验',
-    description: '保存可复现实验、工程实践、踩坑和阶段复盘。',
-    href: '/docs/practice/',
-  },
 ];
 
 function HomepageHeader() {
@@ -58,7 +28,7 @@ function HomepageHeader() {
         </Heading>
         <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
         <p className={styles.heroDescription}>
-          记录概念理解、源码阅读、性能实验和工程复盘，逐步构建完整的 AI Infra 知识体系。
+          从系统、编程、数学和深度学习基础开始，逐步建立扎实的 AI Infra 知识底座。
         </p>
         <div className={styles.buttons}>
           <Link className="button button--primary button--lg" to="/docs/">
@@ -121,7 +91,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="首页"
-      description="从 GPU、CUDA 到分布式训练与大模型推理的 AI Infra 学习知识库">
+      description="系统整理 AI Infra 所需基础知识的个人学习知识库">
       <HomepageHeader />
       <main>
         <TopicGrid />

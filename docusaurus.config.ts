@@ -14,7 +14,7 @@ const isUserPage = projectName === `${organizationName}.github.io`;
 
 const config: Config = {
   title: 'AI Infra 学习笔记',
-  tagline: '从 GPU、CUDA 到分布式训练与大模型推理',
+  tagline: '系统整理 AI Infra 所需的基础知识',
   favicon: 'img/logo.svg',
 
   future: {
@@ -108,7 +108,7 @@ const config: Config = {
     metadata: [
       {
         name: 'keywords',
-        content: 'AI Infra, CUDA, GPU, 分布式训练, 大模型推理, 性能优化',
+        content: 'AI Infra, Linux, C++, PyTorch, GPU, Transformer',
       },
     ],
     colorMode: {
@@ -161,11 +161,9 @@ const config: Config = {
           ],
         },
         {
-          title: '重点方向',
+          title: '当前模块',
           items: [
-            {label: 'GPU 与 CUDA', to: '/docs/gpu-cuda/'},
-            {label: '分布式训练', to: '/docs/distributed-training/'},
-            {label: '大模型推理', to: '/docs/inference-serving/'},
+            {label: '基础知识', to: '/docs/fundamentals/'},
           ],
         },
         ...(githubRepository
