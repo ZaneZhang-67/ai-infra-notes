@@ -34,6 +34,7 @@ const sidebars: SidebarsConfig = {
               label: '2.5 范数、误差与数值容差',
             },
             'fundamentals/math/matrix-multiplication',
+            'fundamentals/math/batched-matrix-multiplication',
           ],
         },
         {
