@@ -1,10 +1,10 @@
 ---
-title: 2.13 LoRA 的低秩更新
+title: 2.12 LoRA 的低秩更新
 description: 从矩阵更新、低秩分解和参数量计算理解 LoRA 的基本原理
 sidebar_position: 13
 ---
 
-# 2.13 LoRA 的低秩更新
+# 2.12 LoRA 的低秩更新
 
 LoRA 是 Low-Rank Adaptation 的缩写，中文通常叫**低秩适配**。它是一种参数高效微调方法，目标是在保留预训练模型能力的同时，只训练很少一部分新增参数
 
