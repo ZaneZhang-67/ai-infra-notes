@@ -15,12 +15,6 @@ GPT 系列模型说明了一个重要事实：只使用 Decoder，也可以完�
 2. $N$ 层 Decoder Block，把输入表示逐层加工成更丰富的上下文表示
 3. 输出层，把最后的隐藏状态映射到词表，得到下一个 token 的概率
 
-<img
-  src="/ai-infra-notes/img/decoder-only-architecture.png"
-  alt="Decoder-only 架构示意图"
-  style={{width: '100%', height: 'auto'}}
-/>
-
 ## 2.2.1 输入层
 
 输入文本首先被切分成 token，再通过 Embedding 映射到模型隐藏维度
