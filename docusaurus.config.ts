@@ -138,6 +138,11 @@ const config: Config = {
           label: '学习日志',
           position: 'left',
         },
+        {
+          to: '/docs/papers',
+          label: '论文研读',
+          position: 'left',
+        },
         ...(githubRepository
           ? [
               {
