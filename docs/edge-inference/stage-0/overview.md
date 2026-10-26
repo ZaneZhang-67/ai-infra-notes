@@ -15,7 +15,7 @@ description: 建立可复现的设备环境档案和第一条可信推理基线�
 
 ## 实践清单
 
-- [ ] [环境盘点](./environment-inventory.md)
+- [ ] [环境判断](./environment-inventory.md)
 - [ ] [PyTorch 推理基线](./pytorch-baseline.md)
 - [ ] 补齐 RTX 5090 环境报告
 - [ ] 补齐 Jetson Orin 环境报告
