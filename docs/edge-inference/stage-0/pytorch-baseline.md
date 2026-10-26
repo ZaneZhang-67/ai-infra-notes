@@ -18,52 +18,77 @@ description: 在 RTX 3090 上建立第一条可复现、计时正确的模型推
 - 输出 P50、P95、P99、吞吐量和峰值显存
 - 重复运行时，能解释结果为什么会有波动
 
-## 实验配置
+## 准备 PyTorch 容器
 
-| 项目 | 配置 |
-|---|---|
-| 设备 | RTX 3090 |
-| 模型 | 待记录 |
-| 权重 | 待记录 |
-| 输入 shape | 待记录 |
-| batch size | 待记录 |
-| dtype | 待记录 |
-| 预热次数 | 待记录 |
-| 测量次数 | 待记录 |
-| PyTorch | 待记录 |
-| CUDA runtime | 待记录 |
+这次不用已经装好 PyTorch 的 NGC 镜像，而是从 NVIDIA CUDA Runtime 镜像开始，自己安装 Python 和 PyTorch
 
-## 执行命令
+这里的`从头创建`不是使用空白的 `FROM scratch`。CUDA 用户态库和 cuDNN 仍然来自 NVIDIA 官方镜像
+
+### 建目录
 
 ```bash
-# 在这里记录实际执行的命令
+cd ~/ZaneZhang-67-ai-infra-notes
+
+mkdir -p docker/pytorch-baseline
+
+cd docker/pytorch-baseline
+
+nano Dockerfile
 ```
 
-## 原始结果
+`~/ZaneZhang-67-ai-infra-notes` 是我本机的仓库路径。其他人需要把第一条命令换成自己的仓库路径，后面的 `docker/pytorch-baseline` 目录可以保持不变
 
-```text
-待记录
+### Dockerfile
+
+```dockerfile
+FROM nvidia/cuda:12.8.1-cudnn-runtime-ubuntu24.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    python3-venv \
+    ca-certificates \
+    && python3 -m venv "$VIRTUAL_ENV" \
+    && pip install --no-cache-dir --upgrade pip \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir \
+    torch==2.8.0 \
+    torchvision==0.23.0 \
+    --index-url https://download.pytorch.org/whl/cu128
+
+WORKDIR /workspace
+
+CMD ["bash"]
 ```
 
-## 结果摘要
+| 配置 | 作用 |
+|---|---|
+| `nvidia/cuda:12.8.1-cudnn-runtime-ubuntu24.04` | Ubuntu 24.04、CUDA 12.8 Runtime 和 cuDNN |
+| `/opt/venv` | 容器里的 Python 虚拟环境 |
+| `torch==2.8.0` | 固定 PyTorch 版本 |
+| `torchvision==0.23.0` | 与 PyTorch 2.8.0 对应的 torchvision 版本 |
+| `cu128` | 安装 CUDA 12.8 版 PyTorch wheel |
+| `/workspace` | 容器内的工作目录，不是宿主机仓库的真实路径 |
 
-| 指标 | 结果 |
-|---|---:|
-| P50 延迟 | 待记录 |
-| P95 延迟 | 待记录 |
-| P99 延迟 | 待记录 |
-| 吞吐量 | 待记录 |
-| 峰值显存 | 待记录 |
-| 起始/结束温度 | 待记录 |
+CUDA 12.8 可以运行在 RTX 3090 上，也支持 RTX 5090 使用的 Blackwell 架构。这份镜像用于 x86_64 桌面显卡，Jetson Orin 和 Thor 后面使用各自 JetPack 对应的 ARM64 镜像
 
-## 错误计时对照
+### 构建镜像
 
-记录一次没有正确同步 GPU 的错误计时结果，再解释为什么它测到的只是 CPU 提交任务的时间，而不是 GPU 真正跑完推理的时间
+在 `docker/pytorch-baseline` 目录执行：
 
-## 观察与结论
+```bash
+docker build -t edge-inference-pytorch:cu128 .
+```
 
-- 待记录
+| 参数 | 含义 |
+|---|---|
+| `docker build` | 根据 Dockerfile 构建镜像 |
+| `-t edge-inference-pytorch:cu128` | 镜像名是 `edge-inference-pytorch`，标签是 `cu128` |
+| `.` | 当前目录是 Docker 构建上下文，Dockerfile 也在这里 |
 
-## 下一步
-
-- 待记录
+构建过程会下载 CUDA Runtime 基础镜像、Ubuntu 软件包和 PyTorch wheel，第一次构建需要等待一段时间
