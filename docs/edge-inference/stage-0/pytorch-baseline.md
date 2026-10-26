@@ -92,3 +92,103 @@ docker build -t edge-inference-pytorch:cu128 .
 | `.` | 当前目录是 Docker 构建上下文，Dockerfile 也在这里 |
 
 构建过程会下载 CUDA Runtime 基础镜像、Ubuntu 软件包和 PyTorch wheel，第一次构建需要等待一段时间
+
+我这次第一次构建用了 `1749.9s`，最后显示 `8/8 FINISHED`，镜像名是 `edge-inference-pytorch:cu128`
+
+### 启动容器
+
+先回到仓库根目录，再启动刚才构建好的镜像：
+
+```bash
+cd ~/ZaneZhang-67-ai-infra-notes
+
+docker run --rm -it \
+  --runtime=nvidia \
+  --ipc=host \
+  -v "$PWD:/workspace" \
+  edge-inference-pytorch:cu128
+```
+
+这里的 `~/ZaneZhang-67-ai-infra-notes` 是我自己的仓库路径，其他人要换成仓库在自己电脑上的实际位置
+
+| 参数 | 含义 |
+|---|---|
+| `--rm` | 退出后删除这次创建的容器，构建好的镜像不会被删除 |
+| `-it` | 让终端可以直接输入命令 |
+| `--runtime=nvidia` | 把 NVIDIA GPU 和驱动交给容器使用 |
+| `--ipc=host` | 让容器使用主机的共享内存，后面跑模型和 DataLoader 时不容易卡在很小的默认共享内存上限 |
+| `-v "$PWD:/workspace"` | 把当前目录挂载到容器里的 `/workspace`，在容器里写下的脚本会直接保存在仓库中 |
+| `edge-inference-pytorch:cu128` | 这次要启动的镜像 |
+
+`$PWD` 代表执行命令时所在的目录，所以这条命令要在仓库根目录运行。如果不在仓库根目录，也可以把 `$PWD` 换成仓库的绝对路径
+
+启动后，提示符会变成类似下面这样：
+
+```text
+root@10ca31222d24:/workspace#
+```
+
+`10ca31222d24` 是这次容器的 ID，每次创建容器都可能不同
+
+### 检查 PyTorch 能不能使用 GPU
+
+在容器中进入 Python：
+
+```bash
+python
+```
+
+逐行执行：
+
+```python
+import torch
+
+torch.__version__
+torch.version.cuda
+torch.cuda.get_device_name(0)
+
+x = torch.randn((4096, 4096), device="cuda")
+y = x @ x
+
+y.shape
+y.device
+```
+
+<img className="figure-image" src="/ai-infra-notes/img/edge-inference/stage-0/rtx-3090-pytorch-cuda-check.png" alt="在自建容器中检查 PyTorch 和 RTX 3090" />
+
+<div className="figure-caption">图 1：在自建容器中检查 PyTorch 版本并运行一次 GPU 矩阵乘法</div>
+
+### 输出怎么看
+
+容器启动时显示：
+
+```text
+CUDA Version 12.8.1
+```
+
+这是基础镜像带进容器的 CUDA Runtime 版本
+
+```text
+'2.8.0+cu128'
+```
+
+当前 PyTorch 版本是 2.8.0，`cu128` 表示安装的是 CUDA 12.8 版 wheel
+
+```text
+'12.8'
+```
+
+这是当前 PyTorch 构建时使用的 CUDA 版本，不是宿主机上 `nvcc` 的版本。宿主机的 CUDA Toolkit 是 12.2，容器中的 PyTorch 仍然可以使用自己带的 CUDA 12.8 用户态库
+
+```text
+'NVIDIA GeForce RTX 3090'
+```
+
+PyTorch 已经能看到宿主机上的 RTX 3090
+
+```text
+torch.Size([4096, 4096])
+device(type='cuda', index=0)
+```
+
+矩阵乘法得到一个 `4096 × 4096` 的张量，结果保存在第 0 张 CUDA 设备上
