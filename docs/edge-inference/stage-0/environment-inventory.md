@@ -80,10 +80,7 @@ VERSION_CODENAME=focal
 
 由此可以判断：
 
-- 当前发行版是 Ubuntu，而不是只知道“它运行 Linux”。
 - 版本是 Ubuntu 20.04.6 LTS，代号为 `focal`。
-- 这是较早的系统版本，后续选择 Python、CMake、Docker、CUDA 和软件包时要核对兼容性。
-- 盘点阶段只记录现状，不因为版本较早就立即升级系统或驱动。
 
 ##### `lscpu | sed -n '1,24p'`
 
