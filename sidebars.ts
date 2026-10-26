@@ -97,6 +97,26 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
+  edgeInferenceSidebar: [
+    {
+      type: 'category',
+      label: '端侧推理',
+      collapsed: false,
+      link: {type: 'doc', id: 'edge-inference/overview'},
+      items: [
+        {
+          type: 'category',
+          label: '阶段 0：环境盘点与基线',
+          collapsed: false,
+          link: {type: 'doc', id: 'edge-inference/stage-0/overview'},
+          items: [
+            'edge-inference/stage-0/environment-inventory',
+            'edge-inference/stage-0/pytorch-baseline',
+          ],
+        },
+      ],
+    },
+  ],
 };
 
 export default sidebars;

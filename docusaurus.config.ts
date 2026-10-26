@@ -129,6 +129,12 @@ const config: Config = {
           label: '前置知识',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'edgeInferenceSidebar',
+          position: 'left',
+          label: '端侧推理',
+        },
+        {
           to: '/docs/roadmap',
           label: '学习路线',
           position: 'left',
