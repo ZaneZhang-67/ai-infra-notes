@@ -41,7 +41,7 @@ free -h
 yons-MS-7D99
 ```
 
-当前机器叫 `yons-MS-7D99`，以后保存 benchmark 时把它一起记下来，免得混淆 3090、5090、Orin 和 Thor 的结果
+当前机器叫 `yons-MS-7D99`
 
 ##### `uname -a`
 
@@ -110,8 +110,6 @@ VERSION_CODENAME=focal
 
 `CPU MHz: 2100` 只是执行命令那一刻的频率，不是固定工作频率。正式测性能时还要记录 CPU governor、温度和频率状态。`BogoMIPS` 是内核校准值，不能拿来比较真实性能
 
-这里只打印了前 24 行，所以没看到 L3 cache 等后续字段，不能把`没显示`理解成`没有`
-
 ##### `free -h`
 
 `free` 用来查看物理内存和 swap，`-h` 会把数字换成 GiB、MiB 这类更容易读的单位
@@ -132,31 +130,6 @@ VERSION_CODENAME=focal
 - `缓冲/缓存 23 GiB`：Linux 用闲置内存缓存文件和数据，应用需要内存时可以回收其中的大部分
 - `可用 53 GiB`：在不产生明显 swap 压力的情况下，新进程大约还能使用多少内存。看内存余量时，这个数字比`空闲`更有用
 - `swap 2 GiB，已用 0 B`：机器配了 2 GiB 交换空间，现在没有用到
-
-当前机器没有明显的内存压力，跑模型基线的系统内存够用，不过这份输出看不出 GPU 显存有多少
-
-### 本轮环境判断
-
-| 判断项 | 结论 | 证据 |
-|---|---|---|
-| 主机 | `yons-MS-7D99` | `hostname` |
-| 平台类型 | x86_64 桌面/工作站平台，不是 Jetson | `uname -a`、`lscpu` |
-| 操作系统 | Ubuntu 20.04.6 LTS（Focal） | `/etc/os-release` |
-| 内核 | Linux 5.15.0-139-generic | `uname -a` |
-| CPU | Intel Core i7-14700，20 个物理核心、28 个逻辑 CPU | `lscpu` |
-| NUMA | 1 个节点，逻辑 CPU 0～27 都在节点 0 | `lscpu` |
-| 系统内存 | 62 GiB 可见，当前约 53 GiB 可用 | `free -h` |
-| swap | 2 GiB，当前未使用 | `free -h` |
-
-这一步还没查到下面这些信息：
-
-- 是否确实安装 RTX 3090
-- NVIDIA 驱动版本和 GPU 显存
-- CUDA 编译器与 CUDA runtime
-- cuDNN、TensorRT、PyTorch
-- Docker 是否能访问 GPU
-
-下一步再查 GPU 和 NVIDIA 软件栈。现在只能确认这是计划用作 3090 开发机的主机，还不能确认 RTX 3090 和相关软件真的可用
 
 ## RTX 5090
 
