@@ -23,11 +23,11 @@ free -h
 
 ![主机、系统和 CPU 信息](pathname:///ai-infra-notes/img/edge-inference/stage-0/rtx-3090-system-environment.png)
 
-*图 1：依次执行 `hostname`、`uname -a`、读取 `os-release`，并查看 `lscpu` 的前 24 行*
+<div className="figure-caption">图 1：依次执行 hostname、uname -a、读取 os-release，并查看 lscpu 的前 24 行</div>
 
 ![内存与交换空间信息](pathname:///ai-infra-notes/img/edge-inference/stage-0/rtx-3090-memory-status.png)
 
-*图 2：执行 `free -h` 得到的内存与交换空间摘要*
+<div className="figure-caption">图 2：执行 free -h 得到的内存与交换空间摘要</div>
 
 #### 每条命令是什么意思
 
@@ -143,7 +143,7 @@ nvidia-smi
 
 ![RTX 3090 的 nvidia-smi 输出](pathname:///ai-infra-notes/img/edge-inference/stage-0/rtx-3090-nvidia-smi.png)
 
-*图 3：RTX 3090 主机上的 `nvidia-smi` 输出*
+<div className="figure-caption">图 3：RTX 3090 主机上的 nvidia-smi 输出</div>
 
 `nvidia-smi` 是 NVIDIA 提供的 GPU 状态查看工具，完整名称是 NVIDIA System Management Interface
 
@@ -191,71 +191,3 @@ NVIDIA-SMI 580.126.09    Driver Version: 580.126.09    CUDA Version: 13.0
 | GPU Memory Usage | 进程占用的显存 |
 
 截图里的 `Xorg`、`gnome-shell` 和桌面应用都在使用 RTX 3090，所以没有运行模型时显存也不会是 0
-
-## RTX 5090
-
-### 执行命令
-
-```bash
-# 待记录
-```
-
-### 原始结果
-
-```text
-待记录
-```
-
-### 观察与结论
-
-- 待记录
-
-## Jetson Orin
-
-### 执行命令
-
-```bash
-# 待记录
-```
-
-### 原始结果
-
-```text
-待记录
-```
-
-### 观察与结论
-
-- 待记录
-
-## Jetson Thor
-
-### 执行命令
-
-```bash
-# 待记录
-```
-
-### 原始结果
-
-```text
-待记录
-```
-
-### 观察与结论
-
-- 待记录
-
-## 设备对比
-
-| 项目 | RTX 3090 | RTX 5090 | Jetson Orin | Jetson Thor |
-|---|---|---|---|---|
-| 设备角色 | 待记录 | 待记录 | 待记录 | 待记录 |
-| CPU 架构 | 待记录 | 待记录 | 待记录 | 待记录 |
-| OS/内核 | 待记录 | 待记录 | 待记录 | 待记录 |
-| GPU/SoC | 待记录 | 待记录 | 待记录 | 待记录 |
-| 驱动或 L4T | 待记录 | 待记录 | 待记录 | 待记录 |
-| CUDA | 待记录 | 待记录 | 待记录 | 待记录 |
-| TensorRT | 待记录 | 待记录 | 待记录 | 待记录 |
-| PyTorch | 待记录 | 待记录 | 待记录 | 待记录 |
-| 主要风险 | 待记录 | 待记录 | 待记录 | 待记录 |

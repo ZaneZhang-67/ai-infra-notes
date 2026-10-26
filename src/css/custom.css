@@ -82,6 +82,15 @@
   margin-top: 2.6rem;
 }
 
+.figure-caption {
+  margin: -0.75rem 0 1.5rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.8rem;
+  font-style: normal;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .footer--dark {
   --ifm-footer-background-color: #090d18;
 }
