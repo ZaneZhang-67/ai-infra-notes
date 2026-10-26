@@ -131,6 +131,67 @@ VERSION_CODENAME=focal
 - `可用 53 GiB`：在不产生明显 swap 压力的情况下，新进程大约还能使用多少内存。看内存余量时，这个数字比`空闲`更有用
 - `swap 2 GiB，已用 0 B`：机器配了 2 GiB 交换空间，现在没有用到
 
+### GPU 与驱动
+
+#### 执行命令
+
+```bash
+nvidia-smi
+```
+
+#### 输出
+
+![RTX 3090 的 nvidia-smi 输出](pathname:///ai-infra-notes/img/edge-inference/stage-0/rtx-3090-nvidia-smi.png)
+
+*图 3：RTX 3090 主机上的 `nvidia-smi` 输出*
+
+`nvidia-smi` 是 NVIDIA 提供的 GPU 状态查看工具，完整名称是 NVIDIA System Management Interface
+
+#### 版本信息
+
+```text
+NVIDIA-SMI 580.126.09    Driver Version: 580.126.09    CUDA Version: 13.0
+```
+
+| 字段 | 输出 | 含义 |
+|---|---|---|
+| NVIDIA-SMI | `580.126.09` | 当前 `nvidia-smi` 工具版本 |
+| Driver Version | `580.126.09` | NVIDIA 驱动版本 |
+| CUDA Version | `13.0` | 当前驱动支持的 CUDA 版本上限，不代表机器已经安装 CUDA 13.0 Toolkit |
+
+#### GPU 状态
+
+| 字段 | 输出 | 含义 |
+|---|---:|---|
+| GPU | `0` | GPU 编号，从 0 开始 |
+| Name | `NVIDIA GeForce RTX 3090` | GPU 型号 |
+| Persistence-M | `Off` | Persistence Mode 没有开启 |
+| Bus-Id | `00000000:01:00.0` | GPU 在 PCIe 总线上的地址 |
+| Disp.A | `On` | 这张卡正在连接桌面显示 |
+| Fan | `40%` | 风扇转速百分比 |
+| Temp | `34C` | 采样时的 GPU 温度 |
+| Perf | `P3` | 采样时处于 P3 性能状态，P0 是最高性能状态 |
+| Pwr:Usage/Cap | `78W / 350W` | 当前功耗 78 W，功耗上限 350 W |
+| Memory-Usage | `1468 MiB / 24576 MiB` | 已使用 1468 MiB 显存，总显存 24576 MiB |
+| GPU-Util | `12%` | 采样时的 GPU 利用率 |
+| Compute M. | `Default` | 使用默认计算模式 |
+| Volatile Uncorr. ECC | `N/A` | 没有可用的 ECC 统计 |
+| MIG M. | `N/A` | 这张卡不提供 MIG 模式 |
+
+#### 进程表
+
+下半部分列出正在使用 GPU 的进程
+
+| 字段 | 含义 |
+|---|---|
+| GPU | 进程使用哪一张 GPU |
+| PID | Linux 进程号 |
+| Type | `G` 是图形进程，`C` 是计算进程，`C+G` 同时使用计算和图形能力 |
+| Process name | 进程名称 |
+| GPU Memory Usage | 进程占用的显存 |
+
+截图里的 `Xorg`、`gnome-shell` 和桌面应用都在使用 RTX 3090，所以没有运行模型时显存也不会是 0
+
 ## RTX 5090
 
 ### 执行命令
