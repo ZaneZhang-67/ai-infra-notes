@@ -5,23 +5,6 @@ description: 通过实际命令判断设备、操作系统、硬件资源和开�
 
 # 环境判断
 
-## 目的
-
-确认每台设备真实安装的软件和硬件版本，为后续选择容器、PyTorch、TensorRT 和构建方式提供依据。盘点阶段不升级驱动，也不修改系统环境。
-
-## 预期结果
-
-每台设备应形成一份包含下列信息的环境档案：
-
-- 主机名、设备角色和 CPU 架构。
-- 操作系统与内核。
-- CPU、内存和可用磁盘。
-- GPU/SoC 型号、显存和驱动。
-- CUDA、cuDNN、TensorRT、JetPack/L4T。
-- Python、PyTorch 和开发工具链。
-- Docker 与 NVIDIA Container Runtime。
-- 已发现的缺失依赖或兼容性风险。
-
 ## RTX 3090
 
 ### 第一次判断：主机、系统、CPU 与内存
