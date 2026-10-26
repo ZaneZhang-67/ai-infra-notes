@@ -21,11 +21,11 @@ free -h
 
 #### 原始结果
 
-![主机、系统和 CPU 信息](pathname:///ai-infra-notes/img/edge-inference/stage-0/rtx-3090-system-environment.png)
+<img className="figure-image" src="/ai-infra-notes/img/edge-inference/stage-0/rtx-3090-system-environment.png" alt="主机、系统和 CPU 信息" />
 
 <div className="figure-caption">图 1：依次执行 hostname、uname -a、读取 os-release，并查看 lscpu 的前 24 行</div>
 
-![内存与交换空间信息](pathname:///ai-infra-notes/img/edge-inference/stage-0/rtx-3090-memory-status.png)
+<img className="figure-image" src="/ai-infra-notes/img/edge-inference/stage-0/rtx-3090-memory-status.png" alt="内存与交换空间信息" />
 
 <div className="figure-caption">图 2：执行 free -h 得到的内存与交换空间摘要</div>
 
@@ -141,7 +141,7 @@ nvidia-smi
 
 #### 输出
 
-![RTX 3090 的 nvidia-smi 输出](pathname:///ai-infra-notes/img/edge-inference/stage-0/rtx-3090-nvidia-smi.png)
+<img className="figure-image" src="/ai-infra-notes/img/edge-inference/stage-0/rtx-3090-nvidia-smi.png" alt="RTX 3090 的 nvidia-smi 输出" />
 
 <div className="figure-caption">图 3：RTX 3090 主机上的 nvidia-smi 输出</div>
 
@@ -202,7 +202,7 @@ nvcc --version
 
 #### 输出
 
-![nvcc 版本输出](pathname:///ai-infra-notes/img/edge-inference/stage-0/rtx-3090-nvcc-version.png)
+<img className="figure-image" src="/ai-infra-notes/img/edge-inference/stage-0/rtx-3090-nvcc-version.png" alt="nvcc 版本输出" />
 
 <div className="figure-caption">图 4：RTX 3090 主机上的 nvcc 版本</div>
 
