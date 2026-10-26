@@ -191,3 +191,40 @@ NVIDIA-SMI 580.126.09    Driver Version: 580.126.09    CUDA Version: 13.0
 | GPU Memory Usage | 进程占用的显存 |
 
 截图里的 `Xorg`、`gnome-shell` 和桌面应用都在使用 RTX 3090，所以没有运行模型时显存也不会是 0
+
+### CUDA Toolkit
+
+#### 执行命令
+
+```bash
+nvcc --version
+```
+
+#### 输出
+
+![nvcc 版本输出](pathname:///ai-infra-notes/img/edge-inference/stage-0/rtx-3090-nvcc-version.png)
+
+<div className="figure-caption">图 4：RTX 3090 主机上的 nvcc 版本</div>
+
+`nvcc` 是 CUDA Toolkit 里的编译器，`--version` 用来查看它的版本
+
+```text
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2023 NVIDIA Corporation
+Built on Tue_Jun_13_19:16:58_PDT_2023
+Cuda compilation tools, release 12.2, V12.2.91
+Build cuda_12.2.r12.2/compiler.32965470_0
+```
+
+| 输出 | 含义 |
+|---|---|
+| `Cuda compiler driver` | 这里的 driver 指编译器驱动程序，不是 NVIDIA 显卡驱动 |
+| `Built on Tue_Jun_13_19:16:58_PDT_2023` | 这个编译器的构建时间 |
+| `release 12.2` | 本机 CUDA Toolkit 的大版本是 12.2 |
+| `V12.2.91` | `nvcc` 的完整版本号 |
+| `compiler.32965470_0` | NVIDIA 内部的编译器构建编号 |
+
+| 查看位置 | 版本 | 表示什么 |
+|---|---:|---|
+| `nvidia-smi` | `CUDA Version: 13.0` | 当前显卡驱动支持的 CUDA 版本上限 |
+| `nvcc --version` | `release 12.2, V12.2.91` | 本机实际安装的 CUDA Toolkit 和编译器版本 |
